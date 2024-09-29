@@ -4,8 +4,7 @@ on:
   pull_request:
   push:
     branches: # Specify your branches here
-      - main # The 'main' branch
-      - 'releases/*' # The release branches
+      - develop # The 'main' branch
 
 jobs:
   qodana:
@@ -22,7 +21,8 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2024.1
         with:
-          pr-mode: false
+          pr-mode: true
+          post-pr-comment: true
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN_1364167210 }}
           QODANA_ENDPOINT: 'https://qodana.cloud'
